@@ -326,7 +326,7 @@ body.dark .modal {
   top: 15px;
   right: 20px;
   padding: 8px 16px;
-  background-color: #2563eb;
+  background-color: #032f3c;
   color: #fff;
   border: none;
   border-radius: 8px;
@@ -338,7 +338,7 @@ body.dark .modal {
 }
 
 .theme-toggle-btn:hover {
-  background-color: #1e40af;
+  background-color:#10898d;
   transform: scale(1.05);
 }
 
