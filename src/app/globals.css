@@ -1,26 +1,481 @@
-@import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  color: #111;
+  transition: background 0.3s, color 0.3s;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+body.dark {
+  background-color: #111827;
+  color: #f4f4f4;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* Navbar */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background-color: #2563eb;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  gap: 20px;
+  z-index: 100;
+}
+
+.navbar .logo {
+  font-size: 20px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.navbar .nav-links {
+  margin-left: auto;
+  display: flex;
+  gap: 10px;
+}
+
+.navbar .nav-links a {
+  color: #fff;
+  text-decoration: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  transition: background 0.3s;
+}
+
+.navbar .nav-links a:hover {
+  background-color: #1e40af;
+}
+
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 60px; /* below navbar */
+  width: 220px;
+  height: calc(100vh - 60px);
+  background: #1f2937;
+  color: #fff;
+  padding: 20px;
+  overflow: hidden;
+  transition: width 0.3s;
+  z-index: 90;
+}
+
+.sidebar nav a {
+  display: block;
+  color: #fff;
+  text-decoration: none;
+  margin: 10px 0;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.sidebar nav a:hover {
+  background-color: #2563eb;
+}
+
+/* Main Content */
+main {
+  margin-left: 240px;
+  padding: 80px 20px 20px; /* top padding for navbar */
+  transition: margin-left 0.3s;
+}
+
+/* Cards */
+.cards {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.card {
+  background: #fff;
+  padding: 15px;
+  width: 300px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: background 0.3s, color 0.3s;
+}
+
+body.dark .card {
+  background: #1f2937;
+  color: #f4f4f4;
+}
+
+.card-title, .card-desc {
+  width: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 16px;
+  margin-bottom: 8px;
+  color: inherit;
+  resize: none;
+}
+
+/* Task Input */
+.task-input {
+  display: flex;
+  gap: 5px;
+  margin-bottom: 10px;
+}
+
+.task-input input {
+  flex: 1;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.task-input button {
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: none;
+  background: #2563eb;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.task-input button:hover {
+  background-color: #1e40af;
+}
+
+/* Tasks */
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 5px;
+}
+
+li input[type="text"] {
+  flex: 1;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 4px 6px;
+  outline: none;
+  background: transparent;
+  color: inherit;
+}
+
+li span {
+  flex: 1;
+}
+
+li.completed span {
+  text-decoration: line-through;
+  color: #9ca3af;
+}
+
+li button {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+/* Calculator Modal */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 200;
+}
+
+.modal {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+body.dark .modal {
+  background: #1f2937;
+  color: #f4f4f4;
+}
+
+/* Theme Toggle Button */
+.theme-toggle-btn {
+  position: fixed;
+  top: 15px;
+  right: 20px;
+  padding: 8px 16px;
+  background-color: #2563eb;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  transition: background 0.3s, transform 0.2s;
+  z-index: 150;
+}
+
+.theme-toggle-btn:hover {
+  background-color: #1e40af;
+  transform: scale(1.05);
+}
+
+body.dark .theme-toggle-btn {
+  background-color: #374151;
+  color: #f4f4f4;
+}
+
+body.dark .theme-toggle-btn:hover {
+  background-color: #1f2937;
+}
+
+/* Profile Section */
+.profile-section {
+  position: fixed;
+  right: 20px;
+  top: 80px;
+  width: 220px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  overflow: hidden;
+  transition: all 0.3s ease;
+  z-index: 150;
+}
+
+body.dark .profile-section {
+  background: #1f2937;
+  color: #f4f4f4;
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.profile-header:hover {
+  background-color: rgba(0,0,0,0.05);
+}
+
+.avatar {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+}
+
+.arrow {
+  font-size: 12px;
+  margin-left: 5px;
+}
+
+.profile-details {
+  padding: 10px;
+  border-top: 1px solid #e5e7eb;
+}
+
+body.dark .profile-details {
+  border-top: 1px solid #374151;
+}
+
+.profile-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.avatar-large {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+
+.profile-info .name {
+  font-weight: bold;
+  margin: 0;
+}
+
+.profile-info .email,
+.profile-info .role {
+  font-size: 12px;
+  margin: 0;
+  color: #6b7280;
+}
+
+body.dark .profile-info .email,
+body.dark .profile-info .role {
+  color: #d1d5db;
+}
+
+/* Responsive */
+@media(max-width:768px){
+  main {
+    margin-left: 0;
+    padding: 80px 10px 10px;
+  }
+  .sidebar {
+    width: 60px;
+  }
+  .cards {
+    flex-direction: column;
+  }
+  .profile-section {
+    width: 90%;
+    right: 5%;
+    top: 70px;
+  }
+  .navbar {
+    flex-direction: column;
+    height: auto;
+    padding: 10px;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+
+/* card */
+.read-todo-card {
+  background: #fefefe;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  padding: 25px;
+  max-width: 800px;
+  margin: 10px auto;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.read-todo-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
+}
+
+.read-todo-header {
+  margin-bottom: 20px; 
+}
+
+.read-todo-title {
+  margin: 0 0 8px 0;
+  font-size: 22px; /* slightly larger title */
+  font-weight: 600;
+  color: #111827;
+}
+
+.read-todo-desc {
+  margin: 0;
+  font-size: 15px; /* slightly larger description */
+  color: #6b7280;
+}
+
+/* Task List */
+.read-todo-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.read-todo-item {
+  background: #f3f4f6;
+  padding: 10px 14px; /* more padding */
+  border-radius: 10px;
+  margin-bottom: 10px;
+  font-size: 16px; /* slightly bigger text */
+  color: #111827;
+  transition: background 0.2s;
+}
+
+.read-todo-item:last-child {
+  margin-bottom: 0;
+}
+
+.read-todo-item:hover {
+  background: #e5e7eb;
+}
+
+.read-todo-completed {
+  text-decoration: line-through;
+  color: #9ca3af;
+}
+/* Task items */
+li {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 5px;
+  cursor: grab; /* default cursor: grab */
+}
+
+li:active {
+  cursor: grabbing; /* while dragging */
+}
+/* Calculator */
+.calculator {
+  width: 300px;
+  background: #2563eb;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  color: #fff;
+}
+
+.calc-display {
+  width: 100%;
+  height: 40px;
+  font-size: 20px;
+  margin-bottom: 15px;
+  padding: 5px 10px;
+  border-radius: 6px;
+  border: none;
+  text-align: right;
+}
+
+.calc-buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.calc-btn {
+  padding: 15px 0;
+  border: none;
+  border-radius: 6px;
+  font-size: 18px;
+  cursor: pointer;
+  background-color: #1e40af;
+  color: #fff;
+  transition: background 0.2s;
+}
+
+.calc-btn:hover {
+  background-color: #3b82f6;
+}
+.todo-card-wrapper {
+  margin-bottom: 30px;
+}
+
+.card-main-title {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #2563eb; /* blue */
+}
+
+.card {
+  padding: 20px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }

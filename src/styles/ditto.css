@@ -1,0 +1,46 @@
+.ditto-container {
+  width: 90%;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  font-family: 'Arial', sans-serif;
+}
+
+.ditto-container h2 {
+  text-align: center;
+  color: #2563eb;
+}
+
+.ditto-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.ditto-table th, .ditto-table td {
+  padding: 12px 16px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.ditto-table th {
+  background-color: #2563eb;
+  color: white;
+}
+
+.ditto-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.ditto-table tr:hover {
+  background-color: #e0e7ff;
+}
+
+.ditto-image {
+  display: block;
+  margin: 0 auto;
+  width: 150px;
+  height: 150px;
+}
