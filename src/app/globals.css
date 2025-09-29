@@ -17,7 +17,7 @@ body.dark {
   align-items: center;
   justify-content: space-between;
   padding: 10px 20px;
-  background-color: #111827;
+  background-color: #10898d;
 }
 
 .logo {
@@ -54,7 +54,7 @@ body.dark {
   left: 0;
   right: 0;
   height: 60px;
-  background-color: #2563eb;
+  background-color: #10898d;
   color: #fff;
   display: flex;
   align-items: center;
@@ -95,7 +95,7 @@ body.dark {
   top: 60px;
   width: 220px;
   height: calc(100vh - 60px);
-  background: #1f2937;
+  background: #032f3c;
   color: #fff;
   padding: 20px;
   overflow: hidden;
@@ -125,7 +125,7 @@ body.dark {
   align-items: center;
   justify-content: flex-start;
   gap: 10px;
-  background: #2563eb;
+  background: #032f3c;
   border: none;
   color: #fff;
   padding: 10px 12px;
@@ -137,22 +137,22 @@ body.dark {
 
 .sidebar nav a:hover,
 .sidebar nav button:hover {
-  background-color: #1e40af;
+  background-color: #032f3c;
   transform: translateX(5px);
 }
 
 .sidebar nav a:focus,
 .sidebar nav button:focus {
   outline: none;
-  box-shadow: 0 0 0 2px #3b82f6;
+  box-shadow: 0 0 0 2px #032f3c;
 }
 
 .sidebar .calc-btn {
-  background: #1f2937;
+  background: #032f3c;
 }
 
 .sidebar .calc-btn:hover {
-  background: #1f2937;
+  background: #032f3c;
   transform: translateX(5px);
 }
 
