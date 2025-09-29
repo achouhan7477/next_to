@@ -1,6 +1,7 @@
 'use client';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
+import '../styles/ReadOnlyTodo.css';
 
 export default function ReadOnlyTodo({ listKey, title: defaultTitle, desc: defaultDesc }) {
   const STORAGE_KEY = 'todo_' + listKey;
