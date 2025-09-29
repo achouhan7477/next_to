@@ -14,12 +14,11 @@ const Navbar = () => {
     { href: "/work", label: "Work Tasks", icon: work },
     { href: "/shopping", label: "Shopping List", icon: shopping },
     { href: "/game", label: "Game List", icon: game },
-    { href: "/theme", label: "Theme", icon: p_task }, // You can use any icon you want here
+    { href: "/theme", label: "Theme", icon: p_task },
   ];
 
   return (
     <nav className="navbar">
-      {/* Logo */}
       <Link
         href="/"
         className="logo"
@@ -35,7 +34,6 @@ const Navbar = () => {
         MyTasks
       </Link>
 
-      {/* Nav Links */}
       <div className="nav-links" style={{ display: "flex", gap: "16px" }}>
         {navItems.map((item) => (
           <Link

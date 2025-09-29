@@ -196,12 +196,11 @@ body.dark .calc-result {
 .toggle-history-btn:hover {
   background: #1e40af;
 }
-/* Sidebar Calculator Button */
 .calc-btn {
   display: flex;
   align-items: center;
-  gap: 8px; /* Space between icon and text */
-  background: #2563eb; /* Blue button */
+  gap: 8px; 
+  background: #2563eb; 
   color: #fff;
   padding: 10px 14px;
   border: none;

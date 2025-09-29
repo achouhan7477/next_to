@@ -1,14 +1,14 @@
-'use client';
-import { useState, useEffect } from 'react';
-import { getProducts } from '../services/services'; 
-import '../styles/ditto.css';
+"use client";
+import { useState, useEffect } from "react";
+import { getProducts } from "../services/services";
+import "../styles/ditto.css";
 
 export default function ProductTable() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [nameFilter, setNameFilter] = useState('');
-  const [categoryFilter, setCategoryFilter] = useState('');
-  const [sortKey, setSortKey] = useState('price');
+  const [nameFilter, setNameFilter] = useState("");
+  const [categoryFilter, setCategoryFilter] = useState("");
+  const [sortKey, setSortKey] = useState("price");
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -22,16 +22,16 @@ export default function ProductTable() {
 
   if (loading) return <p className="loading">Loading Products...</p>;
 
-  const categories = Array.from(new Set(products.map(p => p.category)));
+  const categories = Array.from(new Set(products.map((p) => p.category)));
 
   const filtered = products.filter(
-    p =>
+    (p) =>
       p.title.toLowerCase().includes(nameFilter.toLowerCase()) &&
       (categoryFilter ? p.category === categoryFilter : true)
   );
 
   const sorted = [...filtered].sort((a, b) =>
-    sortKey === 'price' ? a.price - b.price : a.rating - b.rating
+    sortKey === "price" ? a.price - b.price : a.rating - b.rating
   );
 
   return (
@@ -43,17 +43,17 @@ export default function ProductTable() {
           type="text"
           placeholder="Search by Name"
           value={nameFilter}
-          onChange={e => setNameFilter(e.target.value)}
+          onChange={(e) => setNameFilter(e.target.value)}
           className="search-input"
         />
 
         <select
           value={categoryFilter}
-          onChange={e => setCategoryFilter(e.target.value)}
+          onChange={(e) => setCategoryFilter(e.target.value)}
           className="category-select"
         >
           <option value="">All Categories</option>
-          {categories.map(cat => (
+          {categories.map((cat) => (
             <option key={cat} value={cat}>
               {cat}
             </option>
@@ -62,7 +62,7 @@ export default function ProductTable() {
 
         <select
           value={sortKey}
-          onChange={e => setSortKey(e.target.value)}
+          onChange={(e) => setSortKey(e.target.value)}
           className="sort-select"
         >
           <option value="price">Sort by Price</option>
@@ -82,7 +82,7 @@ export default function ProductTable() {
           </tr>
         </thead>
         <tbody>
-          {sorted.map(product => (
+          {sorted.map((product) => (
             <tr key={product.id}>
               <td>{product.id}</td>
               <td>{product.title}</td>

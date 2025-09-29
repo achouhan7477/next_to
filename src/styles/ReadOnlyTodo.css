@@ -1,10 +1,10 @@
-/* Container Card */
+
 .read-todo-card {
-  background: #fef3c7; /* Light yellow background */
+  background: #fef3c7; 
   border-radius: 20px;
   padding: 24px 32px;
-  max-width: 500px; /* Bigger card */
-  margin: 24px auto; /* Center with top & bottom spacing */
+  max-width: 500px;
+  margin: 24px auto;
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
   transition: transform 0.2s, box-shadow 0.2s;
 }
@@ -14,14 +14,14 @@
   box-shadow: 0 16px 32px rgba(0, 0, 0, 0.16);
 }
 
-/* Header */
+
 .read-todo-header {
   margin-bottom: 20px;
 }
 
 .read-todo-title {
   display: inline-block;
-  font-size: 1.5rem; /* Bigger title */
+  font-size: 1.5rem;
   font-weight: 700;
   color: #111827;
   text-decoration: none;
@@ -29,7 +29,7 @@
 }
 
 .read-todo-title:hover {
-  color: #f59e0b; /* Orange accent on hover */
+  color: #f59e0b;
 }
 
 .read-todo-desc {
@@ -38,7 +38,7 @@
   margin-top: 6px;
 }
 
-/* Task List */
+
 .read-todo-list {
   list-style: none;
   padding: 0;
@@ -62,7 +62,7 @@
   align-items: center;
   padding: 12px 16px;
   margin-bottom: 10px;
-  background: #fff7ed; /* Slightly lighter than card */
+  background: #fff7ed;
   border-radius: 14px;
   font-size: 1rem;
   color: #374151;
@@ -78,7 +78,6 @@
   transform: translateX(2px);
 }
 
-/* Completed Task */
 .read-todo-completed {
   background: #d1fae5;
   color: #065f46;
