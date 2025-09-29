@@ -90,12 +90,10 @@ export default function Calculator({ onClose }) {
 
         {result && <div className="calc-result">Result: {result}</div>}
 
-        {/* Show/Hide History button */}
         <button className="toggle-history-btn" onClick={toggleHistory}>
           {showHistory ? 'Hide History' : 'Show History'}
         </button>
 
-        {/* History Section */}
         {showHistory && (
           <div className="calc-history">
             <h4>History</h4>
