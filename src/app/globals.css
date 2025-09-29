@@ -12,6 +12,41 @@ body.dark {
   background-color: #111827;
   color: #f4f4f4;
 }
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background-color: #111827;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.navLinks {
+  display: flex;
+  gap: 16px;
+}
+
+.navLink {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: white;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.navLink:hover {
+  color: #ccc;
+}
 
 .navbar {
   position: fixed;
@@ -54,11 +89,10 @@ body.dark {
   background-color: #1e40af;
 }
 
-/* Sidebar */
 .sidebar {
   position: fixed;
   left: 0;
-  top: 60px; /* below navbar */
+  top: 60px;
   width: 220px;
   height: calc(100vh - 60px);
   background: #1f2937;
@@ -78,7 +112,6 @@ body.dark {
   width: 60px;
 }
 
-/* Sidebar Buttons / Links */
 .sidebar nav {
   display: flex;
   flex-direction: column;
@@ -115,11 +148,11 @@ body.dark {
 }
 
 .sidebar .calc-btn {
-  background-color: #19133d;
+  background: #1f2937;
 }
 
 .sidebar .calc-btn:hover {
-  background-color: #142854;
+  background: #1f2937;
   transform: translateX(5px);
 }
 
@@ -145,7 +178,6 @@ body.dark {
   transform: rotate(90deg);
 }
 
-/* Dark Mode Support */
 body.dark .sidebar {
   background: #111827;
   border-right: 1px solid #374151;
