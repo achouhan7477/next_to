@@ -80,11 +80,9 @@ export default function TodoCard({ listKey, title: defaultTitle, desc: defaultDe
 
   return (
     <div className="todo-card-wrapper">
-      {/* Title above the card */}
       <h2 className="card-main-title">{title}</h2>
 
       <div className="card">
-        {/* Editable title inside card */}
         <input 
           className="card-title" 
           value={title} 

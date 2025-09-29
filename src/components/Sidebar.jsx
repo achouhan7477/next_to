@@ -11,7 +11,6 @@ export default function Sidebar() {
     <div className={`sidebar ${expanded ? 'expanded' : ''}`}>
       {/* <div className="logo">🚀 MyDashboard</div> */}
       {/* <button onClick={() => setExpanded(!expanded)}>
-        {expanded ? '⬅️' : '➡️'}
       </button> */}
       <nav>
         {/* <Link href="/">Home</Link> */}

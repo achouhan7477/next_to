@@ -1,4 +1,3 @@
-/* Calculator Overlay */
 .calc-overlay {
   position: fixed;
   inset: 0;
@@ -10,7 +9,6 @@
   backdrop-filter: blur(2px);
 }
 
-/* Calculator Container */
 .calc-container {
   background: #fff;
   padding: 20px;
@@ -36,14 +34,13 @@
   }
 }
 
-/* Dark Mode Support */
 body.dark .calc-container {
   background: #1f2937;
   color: #f4f4f4;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
 }
 
-/* Display Input */
+
 .calc-display {
   width: 80%;
   margin-top: 1rem;
@@ -62,14 +59,14 @@ body.dark .calc-display {
   color: #f4f4f4;
 }
 
-/* Buttons Grid */
+
 .calc-buttons {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 8px;
 }
 
-/* Buttons Style */
+
 .calc-buttons button {
   padding: 14px;
   font-size: 18px;
@@ -90,7 +87,7 @@ body.dark .calc-display {
   transform: scale(0.95);
 }
 
-/* Special Buttons */
+
 .calc-buttons button.equal {
   background: #16a34a;
 }
@@ -107,7 +104,6 @@ body.dark .calc-display {
   background: #dc2626;
 }
 
-/* Close Button */
 .close-btn {
   position: absolute;
   top: 8px;
@@ -132,7 +128,7 @@ body.dark .close-btn:hover {
   color: #fff;
 }
 
-/* Result Display */
+
 .calc-result {
   margin-top: 8px;
   font-weight: bold;

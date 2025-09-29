@@ -12,7 +12,6 @@ body.dark {
   color: #f4f4f4;
 }
 
-/* Navbar */
 .navbar {
   position: fixed;
   top: 0;
@@ -65,31 +64,111 @@ body.dark {
   color: #fff;
   padding: 20px;
   overflow: hidden;
-  transition: width 0.3s;
+  transition: width 0.3s ease, background 0.3s ease;
   z-index: 90;
+  border-right: 1px solid #374151;
 }
 
-.sidebar nav a {
-  display: block;
+.sidebar.expanded {
+  width: 220px;
+}
+
+.sidebar:not(.expanded) {
+  width: 60px;
+}
+
+/* Sidebar Buttons / Links */
+.sidebar nav {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.sidebar nav a,
+.sidebar nav button {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  background: #2563eb;
+  border: none;
   color: #fff;
-  text-decoration: none;
-  margin: 10px 0;
-  padding: 5px 10px;
-  border-radius: 5px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-.sidebar nav a:hover {
+.sidebar nav a:hover,
+.sidebar nav button:hover {
+  background-color: #1e40af;
+  transform: translateX(5px);
+}
+
+.sidebar nav a:focus,
+.sidebar nav button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #3b82f6;
+}
+
+.sidebar .calc-btn {
+  background-color: #19133d;
+}
+
+.sidebar .calc-btn:hover {
+  background-color: #142854;
+  transform: translateX(5px);
+}
+
+.sidebar .toggle-btn {
+  position: absolute;
+  top: 10px;
+  right: -15px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: none;
   background-color: #2563eb;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
 }
 
-/* Main Content */
+.sidebar .toggle-btn:hover {
+  background-color: #1e40af;
+  transform: rotate(90deg);
+}
+
+/* Dark Mode Support */
+body.dark .sidebar {
+  background: #111827;
+  border-right: 1px solid #374151;
+}
+
+body.dark .sidebar nav a,
+body.dark .sidebar nav button {
+  background-color: #2563eb;
+  color: #f4f4f4;
+}
+
+body.dark .sidebar nav a:hover,
+body.dark .sidebar nav button:hover {
+  background-color: #1e40af;
+}
+
+
 main {
   margin-left: 240px;
-  padding: 80px 20px 20px; /* top padding for navbar */
+  padding: 80px 20px 20px; 
   transition: margin-left 0.3s;
 }
 
-/* Cards */
+
 .cards {
   display: flex;
   gap: 20px;
@@ -121,7 +200,7 @@ body.dark .card {
   resize: none;
 }
 
-/* Task Input */
+
 .task-input {
   display: flex;
   gap: 5px;
@@ -149,7 +228,7 @@ body.dark .card {
   background-color: #1e40af;
 }
 
-/* Tasks */
+
 ul {
   list-style: none;
   padding: 0;
@@ -188,7 +267,6 @@ li button {
   font-size: 16px;
 }
 
-/* Calculator Modal */
 .modal-overlay {
   position: fixed;
   inset: 0;
@@ -210,7 +288,6 @@ body.dark .modal {
   color: #f4f4f4;
 }
 
-/* Theme Toggle Button */
 .theme-toggle-btn {
   position: fixed;
   top: 15px;
@@ -241,7 +318,6 @@ body.dark .theme-toggle-btn:hover {
   background-color: #1f2937;
 }
 
-/* Profile Section */
 .profile-section {
   position: fixed;
   right: 20px;
@@ -322,7 +398,6 @@ body.dark .profile-info .role {
   color: #d1d5db;
 }
 
-/* Responsive */
 @media(max-width:768px){
   main {
     margin-left: 0;
@@ -346,8 +421,6 @@ body.dark .profile-info .role {
   }
 }
 
-
-/* card */
 .read-todo-card {
   background: #fefefe;
   border-radius: 12px;
@@ -369,18 +442,17 @@ body.dark .profile-info .role {
 
 .read-todo-title {
   margin: 0 0 8px 0;
-  font-size: 22px; /* slightly larger title */
+  font-size: 22px;
   font-weight: 600;
   color: #111827;
 }
 
 .read-todo-desc {
   margin: 0;
-  font-size: 15px; /* slightly larger description */
+  font-size: 15px;
   color: #6b7280;
 }
 
-/* Task List */
 .read-todo-list {
   list-style: none;
   padding: 0;
@@ -389,10 +461,10 @@ body.dark .profile-info .role {
 
 .read-todo-item {
   background: #f3f4f6;
-  padding: 10px 14px; /* more padding */
+  padding: 10px 14px; 
   border-radius: 10px;
   margin-bottom: 10px;
-  font-size: 16px; /* slightly bigger text */
+  font-size: 16px;
   color: #111827;
   transition: background 0.2s;
 }
@@ -409,19 +481,17 @@ body.dark .profile-info .role {
   text-decoration: line-through;
   color: #9ca3af;
 }
-/* Task items */
 li {
   display: flex;
   align-items: center;
   gap: 5px;
   margin-bottom: 5px;
-  cursor: grab; /* default cursor: grab */
+  cursor: grab;
 }
 
 li:active {
-  cursor: grabbing; /* while dragging */
+  cursor: grabbing; 
 }
-/* Calculator */
 .calculator {
   width: 300px;
   background: #2563eb;
@@ -470,7 +540,7 @@ li:active {
   font-size: 24px;
   font-weight: 600;
   margin-bottom: 10px;
-  color: #2563eb; /* blue */
+  color: #2563eb;
 }
 
 .card {

@@ -6,11 +6,44 @@
   border-radius: 8px;
   background-color: #f9f9f9;
   font-family: 'Arial', sans-serif;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 }
 
 .ditto-container h2 {
   text-align: center;
   color: #2563eb;
+  margin-bottom: 20px;
+}
+
+.ditto-image {
+  display: block;
+  margin: 10px auto 20px;
+  width: 150px;
+  height: 150px;
+}
+
+.controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  gap: 10px;
+}
+
+.controls input {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.controls select {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background-color: #fff;
+  font-size: 14px;
 }
 
 .ditto-table {
@@ -19,7 +52,8 @@
   margin-top: 20px;
 }
 
-.ditto-table th, .ditto-table td {
+.ditto-table th,
+.ditto-table td {
   padding: 12px 16px;
   border: 1px solid #ddd;
   text-align: left;
@@ -38,9 +72,10 @@
   background-color: #e0e7ff;
 }
 
-.ditto-image {
-  display: block;
-  margin: 0 auto;
-  width: 150px;
-  height: 150px;
+.loading {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 500;
+  color: #4b5563;
+  margin: 20px 0;
 }
