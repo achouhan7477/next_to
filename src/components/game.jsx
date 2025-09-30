@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { getProducts } from "../services/services";
 import "../styles/ditto.css";
 
@@ -23,6 +23,7 @@ export default function ProductTable() {
   const [visibleCount, setVisibleCount] = useState(10);
   const [loadingMore, setLoadingMore] = useState(false);
 
+  const loaderRef = useRef(null);
   const debouncedNameFilter = useDebounce(nameFilter, 500);
 
   useEffect(() => {
@@ -55,26 +56,29 @@ export default function ProductTable() {
   };
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (
-        window.innerHeight + window.scrollY >=
-          document.documentElement.scrollHeight - 50 &&
-        visibleCount < sorted.length &&
-        !loadingMore
-      ) {
-        setLoadingMore(true);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const target = entries[0];
+        if (target.isIntersecting && visibleCount < sorted.length && !loadingMore) {
+          setLoadingMore(true);
 
-        setTimeout(() => {
-          setVisibleCount((prev) =>
-            prev + 10 <= sorted.length ? prev + 10 : sorted.length
-          );
-          setLoadingMore(false);
-        }, 3000);
-      }
+          setTimeout(() => {
+            setVisibleCount((prev) =>
+              prev + 10 <= sorted.length ? prev + 10 : sorted.length
+            );
+            setLoadingMore(false);
+          }, 3000);
+        }
+      },
+      { threshold: 1.0 }
+    );
+
+    const currentLoader = loaderRef.current;
+    if (currentLoader) observer.observe(currentLoader);
+
+    return () => {
+      if (currentLoader) observer.unobserve(currentLoader);
     };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
   }, [visibleCount, sorted.length, loadingMore]);
 
   return (
@@ -146,9 +150,11 @@ export default function ProductTable() {
             </tbody>
           </table>
 
+          <div ref={loaderRef} style={{ height: "50px" }} />
+
           {loadingMore && (
             <p style={{ textAlign: "center", marginTop: "10px" }}>
-              Loading ...
+              Loading more products...
             </p>
           )}
 
