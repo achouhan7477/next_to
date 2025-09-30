@@ -3,6 +3,22 @@ import { useState, useEffect } from "react";
 import { getProducts } from "../services/services";
 import "../styles/ditto.css";
 
+function useDebounce(value, delay) {
+  const [debouncedValue, setDebouncedValue] = useState(value);
+
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      setDebouncedValue(value);
+    }, delay);
+
+    return () => {
+      clearTimeout(handler);
+    };
+  }, [value, delay]);
+
+  return debouncedValue;
+}
+
 export default function ProductTable() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -10,13 +26,17 @@ export default function ProductTable() {
   const [categoryFilter, setCategoryFilter] = useState("");
   const [sortKey, setSortKey] = useState("price");
 
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 10;
+
+  const debouncedNameFilter = useDebounce(nameFilter, 500);
+
   useEffect(() => {
     const fetchProducts = async () => {
       const data = await getProducts(100);
       setProducts(data);
       setLoading(false);
     };
-
     fetchProducts();
   }, []);
 
@@ -26,13 +46,29 @@ export default function ProductTable() {
 
   const filtered = products.filter(
     (p) =>
-      p.title.toLowerCase().includes(nameFilter.toLowerCase()) &&
+      p.title.toLowerCase().includes(debouncedNameFilter.toLowerCase()) &&
       (categoryFilter ? p.category === categoryFilter : true)
   );
 
   const sorted = [...filtered].sort((a, b) =>
     sortKey === "price" ? a.price - b.price : a.rating - b.rating
   );
+
+  const totalPages = Math.ceil(sorted.length / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const paginatedProducts = sorted.slice(startIndex, startIndex + itemsPerPage);
+
+  const goToPage = (page) => {
+    if (page < 1) page = 1;
+    if (page > totalPages) page = totalPages;
+    setCurrentPage(page);
+  };
+
+  const clearFilters = () => {
+    setNameFilter("");
+    setCategoryFilter("");
+    setCurrentPage(1);
+  };
 
   return (
     <div className="ditto-container">
@@ -68,6 +104,10 @@ export default function ProductTable() {
           <option value="price">Sort by Price</option>
           <option value="rating">Sort by Rating</option>
         </select>
+
+        <button className="clear-btn" onClick={clearFilters}>
+          Clear Filters
+        </button>
       </div>
 
       <table className="ditto-table">
@@ -82,7 +122,7 @@ export default function ProductTable() {
           </tr>
         </thead>
         <tbody>
-          {sorted.map((product) => (
+          {paginatedProducts.map((product) => (
             <tr key={product.id}>
               <td>{product.id}</td>
               <td>{product.title}</td>
@@ -94,6 +134,21 @@ export default function ProductTable() {
           ))}
         </tbody>
       </table>
+
+      <div className="pagination">
+        <button onClick={() => goToPage(currentPage - 1)} disabled={currentPage === 1}>
+          &#8592;
+        </button>
+        <span>
+          Page {currentPage} of {totalPages}
+        </span>
+        <button
+          onClick={() => goToPage(currentPage + 1)}
+          disabled={currentPage === totalPages}
+        >
+          &#8594;
+        </button>
+      </div>
     </div>
   );
 }

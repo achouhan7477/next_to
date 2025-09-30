@@ -14,7 +14,7 @@ const Navbar = () => {
     { href: "/work", label: "Work Tasks", icon: work },
     { href: "/shopping", label: "Shopping List", icon: shopping },
     { href: "/game", label: "Game List", icon: game },
-    { href: "/theme", label: "Theme", icon: p_task },
+    { href: "/", label: "Theme", icon: p_task },
   ];
 
   return (

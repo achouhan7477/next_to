@@ -79,3 +79,86 @@
   color: #4b5563;
   margin: 20px 0;
 }
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.pagination button {
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: 1px solid #10898d;
+  background-color: white;
+  color: #10898d;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.pagination button:hover:not(:disabled) {
+  background-color: #10898d;
+  color: white;
+}
+
+.pagination button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.pagination span {
+  font-weight: 500;
+  color: #10898d;
+}
+
+/* Clear button */
+.clear-btn {
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: 1px solid #10898d;
+  background-color: white;
+  color: #10898d;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.clear-btn:hover {
+  background-color: #10898d;
+  color: white;
+}
+
+.pagination button {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid #10898d;
+  background-color: white;
+  color: #10898d;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.pagination button:hover:not(:disabled) {
+  background-color: #10898d;
+  color: white;
+}
+
+.pagination button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.pagination span {
+  margin: 0 10px;
+  font-weight: 500;
+  color: #10898d;
+}
